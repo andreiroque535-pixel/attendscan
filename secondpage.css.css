@@ -1,0 +1,279 @@
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    color:#222;
+}
+
+/* APP CONTAINER */
+.mobile-app{
+    width:100%;
+    min-height:100vh;
+    padding:15px;
+    padding-bottom:90px;
+}
+
+/* HEADER */
+.app-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.app-title{
+    font-size:1.5rem;
+    color:#1f3c88;
+    font-weight:700;
+}
+
+.app-subtitle{
+    font-size:.8rem;
+    color:#666;
+}
+
+.menu-btn{
+    border:none;
+    background:#1f3c88;
+    color:white;
+    width:40px;
+    height:40px;
+    border-radius:10px;
+    font-size:1.2rem;
+    cursor:pointer;
+}
+
+/* SESSION CARD */
+.session-card{
+    background:white;
+    border-radius:15px;
+    padding:18px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    margin-bottom:15px;
+}
+
+.session-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.session-title{
+    font-size:1rem;
+}
+
+.session-status{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:.8rem;
+}
+
+.active{
+    background:#28a745;
+    color:white;
+}
+
+.session-details{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.detail-item{
+    display:flex;
+    justify-content:space-between;
+}
+
+/* STATISTICS */
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.stat-card{
+    padding:15px;
+    border-radius:15px;
+    color:white;
+    text-align:center;
+}
+
+.total{
+    background:#1f3c88;
+}
+
+.present{
+    background:#27ae60;
+}
+
+.absent{
+    background:#e74c3c;
+}
+
+.stat-title{
+    font-size:.8rem;
+    margin-bottom:6px;
+}
+
+.stat-value{
+    font-size:1.4rem;
+    font-weight:bold;
+}
+
+
+
+
+.action-btn{
+    width:100%;
+    border:none;
+    border-radius:12px;
+    padding:15px;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.start-btn{
+    background:#1f3c88;
+}
+
+.scanner-btn{
+    background:#009879;
+}
+
+.masterlist-btn{
+    background:#16a085;
+}
+
+.reports-btn{
+    background:#34495e;
+}
+
+/* ATTENDANCE CARD */
+.attendance-card{
+    background:white;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:15px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.card-header{
+    margin-bottom:15px;
+}
+
+.card-title{
+    font-size:1rem;
+}
+
+.student-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.student-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #eee;
+    padding-bottom:10px;
+}
+
+.student-name{
+    font-size:.95rem;
+}
+
+.student-id{
+    font-size:.8rem;
+    color:#666;
+}
+
+.badge{
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:.75rem;
+}
+
+.present-badge{
+    background:#d4edda;
+    color:#155724;
+}
+
+.absent-badge{
+    background:#f8d7da;
+    color:#721c24;
+}
+
+/* BOTTOM NAVIGATION */
+.bottom-nav{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    background:white;
+    display:flex;
+    justify-content:space-around;
+    padding:12px 5px;
+    box-shadow:0 -3px 10px rgba(0,0,0,.1);
+}
+
+.nav-item{
+    border:none;
+    background:none;
+    font-size:.8rem;
+    color:#666;
+    cursor:pointer;
+}
+
+.active-nav{
+    color:#1f3c88;
+    font-weight:bold;
+}
+
+/* TABLET */
+@media (min-width:768px){
+
+    .mobile-app{
+        max-width:900px;
+        margin:auto;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .action-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .student-list{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:15px;
+    }
+}
+
+/* DESKTOP */
+@media (min-width:1024px){
+
+    .mobile-app{
+        max-width:1200px;
+    }
+
+    .action-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .attendance-card{
+        padding:25px;
+    }
+}
