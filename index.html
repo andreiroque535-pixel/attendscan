@@ -1,15 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>ATTENDSCAN Dashboard</title>
 
     <link rel="stylesheet" href="secondpage.css">
 </head>
+
 <body>
 
     <div class="mobile-app">
@@ -19,35 +22,40 @@
 
             <div class="app-brand">
                 <h1 class="app-title">ATTENDSCAN</h1>
+
                 <p class="app-subtitle">
                     QR Attendance Monitoring System
                 </p>
             </div>
 
-           
-<button class="menu-btn" id="menuBtn">
-    ☰
-</button>
+            <!-- MENU BUTTON -->
+            <button class="menu-btn"
+                    id="menuBtn"
+                    type="button">
+                ☰
+            </button>
 
-<!-- MENU PANEL -->
-<div class="menu-panel" id="menuPanel">
+            <!-- MENU PANEL -->
+            <div class="menu-panel" id="menuPanel">
 
-    <h3>Session Management</h3>
+                <h3>Session Management</h3>
 
-    <button id="startAttendanceBtn">
-        Start Attendance
-    </button>
+                <button id="startAttendanceBtn"
+                        type="button">
+                    Start Attendance
+                </button>
 
-    <button id="newSessionBtn">
-        Create New Session
-    </button>
+                <button id="newSessionBtn"
+                        type="button">
+                    Create New Session
+                </button>
 
-</div>
-
+            </div>
 
         </header>
 
-        <!-- SESSION CARD -->
+
+        <!-- CURRENT SESSION -->
         <section class="session-card">
 
             <div class="session-top">
@@ -56,158 +64,201 @@
                     Current Session
                 </h2>
 
-                <span class="session-status active">
-                    Active
+                <span class="session-status"
+                      id="sessionStatus">
+                    No Active Session
                 </span>
 
             </div>
 
             <div class="session-details">
 
+                <!-- SECTION -->
                 <div class="detail-item">
+
                     <span class="detail-label">
                         Section
                     </span>
 
-                    <span class="detail-value">
-                        SWIFT
+                    <span class="detail-value"
+                          id="sessionSection">
+                        —
                     </span>
+
                 </div>
 
+
+                <!-- DATE -->
                 <div class="detail-item">
+
                     <span class="detail-label">
                         Date
                     </span>
 
-                    <span class="detail-value" id="currentDate">
-                        November 8, 2026
+                    <span class="detail-value"
+                          id="currentDate">
+                        No session
                     </span>
+
                 </div>
 
+
+                <!-- TIME -->
                 <div class="detail-item">
+
                     <span class="detail-label">
                         Time
                     </span>
 
-                    <span class="detail-value" id="currentTime">
-                        08:00 AM
+                    <span class="detail-value"
+                          id="currentTime">
+                        Not started
                     </span>
+
                 </div>
 
             </div>
 
         </section>
 
+
         <!-- STATISTICS -->
-       
-<!-- STATISTICS -->
-<section class="stats-grid">
+        <section class="stats-grid">
 
-    <div class="stat-card total">
-        <h3 class="stat-title">Students</h3>
-        <span class="stat-value" id="totalStudents">0</span>
-    </div>
+            <div class="stat-card total">
 
-    <div class="stat-card present">
-        <h3 class="stat-title">Present</h3>
-        <span class="stat-value" id="presentStudents">0</span>
-    </div>
+                <h3 class="stat-title">
+                    Students
+                </h3>
 
-    <div class="stat-card absent">
-        <h3 class="stat-title">Absent</h3>
-        <span class="stat-value" id="absentStudents">0</span>
-    </div>
+                <span class="stat-value"
+                      id="totalStudents">
+                    0
+                </span>
 
-    <div class="stat-card male-present">
-        <h3 class="stat-title">Male Present</h3>
-        <span class="stat-value" id="malePresent">0</span>
-    </div>
-
-    <div class="stat-card female-present">
-        <h3 class="stat-title">Female Present</h3>
-        <span class="stat-value" id="femalePresent">0</span>
-    </div>
+            </div>
 
 
+            <div class="stat-card present">
 
-</section>
+                <h3 class="stat-title">
+                    Present
+                </h3>
 
-</section>
+                <span class="stat-value"
+                      id="presentStudents">
+                    0
+                </span>
+
+            </div>
+
+
+            <div class="stat-card absent">
+
+                <h3 class="stat-title">
+                    Absent
+                </h3>
+
+                <span class="stat-value"
+                      id="absentStudents">
+                    0
+                </span>
+
+            </div>
+
+
+            <div class="stat-card male-present">
+
+                <h3 class="stat-title">
+                    Male Present
+                </h3>
+
+                <span class="stat-value"
+                      id="malePresent">
+                    0
+                </span>
+
+            </div>
+
+
+            <div class="stat-card female-present">
+
+                <h3 class="stat-title">
+                    Female Present
+                </h3>
+
+                <span class="stat-value"
+                      id="femalePresent">
+                    0
+                </span>
+
+            </div>
+
+        </section>
 
 
         <!-- PRESENT STUDENTS -->
         <section class="attendance-card">
 
             <div class="card-header">
+
                 <h2 class="card-title">
                     Present Students
                 </h2>
+
             </div>
 
-            <div class="student-list" id="presentList">
-    <p>Loading present students...</p>
-</div>
+            <div class="student-list"
+                 id="presentList">
 
-                <div class="student-item">
-
-                 
-
-                </div>
-
-                <div class="student-item">
-
-                 
-                    </span>
-
-                </div>
+                <p>Loading present students...</p>
 
             </div>
 
         </section>
+
 
         <!-- ABSENT STUDENTS -->
         <section class="attendance-card">
 
             <div class="card-header">
+
                 <h2 class="card-title">
                     Absent Students
                 </h2>
+
             </div>
 
-            <div class="student-list" id="absentList">
-    <p>Loading absent students...</p>
-</div>
+            <div class="student-list"
+                 id="absentList">
 
-                <div class="student-item">
-
-                 
-                    </span>
-
-                </div>
+                <p>Loading absent students...</p>
 
             </div>
 
         </section>
 
+
         <!-- BOTTOM NAVIGATION -->
         <nav class="bottom-nav">
 
-            <button class="nav-item active-nav">
+            <button class="nav-item active-nav"
+                    type="button">
                 Dashboard
             </button>
 
-          
-
-            <button class="nav-item">
+            <button class="nav-item"
+                    type="button">
                 Students
             </button>
 
-           
         </nav>
 
     </div>
 
-    <script src="dashboard.js?v=3"></script>
+
+    <!-- DASHBOARD JAVASCRIPT -->
+    <script src="dashboard.js?v=4"></script>
 
 </body>
 </html>
