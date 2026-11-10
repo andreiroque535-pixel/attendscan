@@ -1,40 +1,47 @@
 
-function loadDashboard(data) {
+// ==========================================
+// ATTENDSCAN - DASHBOARD JAVASCRIPT
+// ==========================================
 
-    if (!data.success) {
-        console.error("Dashboard error:", data.message);
-        return;
-    }
+// DISPLAY STUDENT INFORMATION
+function createStudentItem(student, status) {
 
-    // UPDATE STATISTICS
-    document.getElementById("totalStudents").textContent =
-        data.totalStudents;
+    const item = document.createElement("div");
+    item.className = "student-item";
 
-    document.getElementById("presentStudents").textContent =
-        data.present;
+    const info = document.createElement("div");
+    info.className = "student-info";
 
-    document.getElementById("absentStudents").textContent =
-        data.absent;
+    const name = document.createElement("h3");
+    name.className = "student-name";
+    name.textContent = student.fullName;
 
-    document.getElementById("malePresent").textContent =
-        data.malePresent;
+    const id = document.createElement("p");
+    id.className = "student-id";
+    id.textContent = student.id;
 
-    document.getElementById("femalePresent").textContent =
-        data.femalePresent;
+    const badge = document.createElement("span");
+    badge.className = status === "PRESENT"
+        ? "badge present-badge"
+        : "badge absent-badge";
 
-    // UPDATE STUDENT LISTS
-    displayStudentList("presentList", data.presentStudents, "Present");
+    badge.textContent =
+        status === "PRESENT" ? "Present" : "Absent";
 
-    displayStudentList("absentList", data.absentStudents, "Absent");
+    info.appendChild(name);
+    info.appendChild(id);
+
+    item.appendChild(info);
+    item.appendChild(badge);
+
+    return item;
 }
 
 
-// DISPLAY STUDENT LIST
-function displayStudentList(elementId, students, status) {
+// DISPLAY STUDENT LISTS
+function displayStudents(students, containerId, status) {
 
-    const container = document.getElementById(elementId);
-
-    if (!container) return;
+    const container = document.getElementById(containerId);
 
     container.replaceChildren();
 
@@ -51,57 +58,83 @@ function displayStudentList(elementId, students, status) {
 
     students.forEach(function(student) {
 
-        const item = document.createElement("div");
-        item.className = "student-item";
-
-        const info = document.createElement("div");
-        info.className = "student-info";
-
-        const name = document.createElement("h3");
-        name.className = "student-name";
-        name.textContent = student.fullName;
-
-        const id = document.createElement("p");
-        id.className = "student-id";
-        id.textContent = student.id;
-
-        const badge = document.createElement("span");
-        badge.className = status === "Present"
-            ? "badge present-badge"
-            : "badge absent-badge";
-
-        badge.textContent = status;
-
-        info.appendChild(name);
-        info.appendChild(id);
-
-        item.appendChild(info);
-        item.appendChild(badge);
+        const item = createStudentItem(student, status);
 
         container.appendChild(item);
 
     });
+
 }
 
 
-// LOAD DASHBOARD DATA
-function updateDashboard() {
+// RECEIVE DASHBOARD DATA
+window.loadDashboard = function(data) {
 
-    const oldScript = document.getElementById("dashboardRequest");
+    if (!data || !data.success) {
+        console.error("Dashboard data error:", data);
+        return;
+    }
+
+    
+// UPDATE STATISTICS
+document.getElementById("totalStudents").textContent =
+    data.totalStudents;
+
+document.getElementById("presentStudents").textContent =
+    data.present;
+
+document.getElementById("absentStudents").textContent =
+    data.absent;
+
+document.getElementById("malePresent").textContent =
+    data.malePresent;
+
+document.getElementById("femalePresent").textContent =
+    data.femalePresent;
+
+
+    // DISPLAY PRESENT STUDENTS
+    displayStudents(
+        data.presentStudents,
+        "presentList",
+        "PRESENT"
+    );
+
+    // DISPLAY ABSENT STUDENTS
+    displayStudents(
+        data.absentStudents,
+        "absentList",
+        "ABSENT"
+    );
+
+};
+
+
+// LOAD DATA FROM GOOGLE APPS SCRIPT
+
+// ==========================================
+// AUTOMATIC DASHBOARD REFRESH
+// ==========================================
+
+function refreshDashboard() {
+
+    // Remove previous dashboard request
+    const oldScript = document.getElementById("dashboardScript");
 
     if (oldScript) {
         oldScript.remove();
     }
 
+    // Create new request
     const script = document.createElement("script");
 
-    script.id = "dashboardRequest";
+    script.id = "dashboardScript";
 
     script.src =
-        "https://script.google.com/macros/s/AKfycbwEWKsCZ48YblGnv_QdEBLKyaQ72_xHm2d8pYIxd3JC0mOqvAYkuN9ymyLGwZaZkA8aQA/exec?action=dashboard&callback=loadDashboard";
+        "https://script.google.com/macros/s/AKfycbwEWKsCZ48YblGnv_QdEBLKyaQ72_xHm2d8pYIxd3JC0mOqvAYkuN9ymyLGwZaZkA8aQA/exec?action=dashboard&callback=loadDashboard&t=" + Date.now();
 
     script.onerror = function() {
-        console.error("Unable to load dashboard data.");
+        console.error("Dashboard refresh failed.");
     };
 
     document.body.appendChild(script);
@@ -109,8 +142,16 @@ function updateDashboard() {
 
 
 // INITIAL LOAD
-updateDashboard();
+refreshDashboard();
 
 
 // AUTOMATIC REFRESH EVERY 5 SECONDS
-setInterval(updateDashboard, 5000);
+setInterval(refreshDashboard, 5000);
+
+
+const menuBtn = document.getElementById("menuBtn");
+const menuPanel = document.getElementById("menuPanel");
+
+menuBtn.addEventListener("click", function() {
+    menuPanel.classList.toggle("show");
+});
