@@ -24,9 +24,26 @@
                 </p>
             </div>
 
-            <button class="menu-btn">
-                ☰
-            </button>
+           
+<button class="menu-btn" id="menuBtn">
+    ☰
+</button>
+
+<!-- MENU PANEL -->
+<div class="menu-panel" id="menuPanel">
+
+    <h3>Session Management</h3>
+
+    <button id="startAttendanceBtn">
+        Start Attendance
+    </button>
+
+    <button id="newSessionBtn">
+        Create New Session
+    </button>
+
+</div>
+
 
         </header>
 
@@ -82,45 +99,41 @@
         </section>
 
         <!-- STATISTICS -->
-        <section class="stats-grid">
+       
+<!-- STATISTICS -->
+<section class="stats-grid">
 
-            <div class="stat-card total">
-                <h3 class="stat-title">
-                    Students
-                </h3>
+    <div class="stat-card total">
+        <h3 class="stat-title">Students</h3>
+        <span class="stat-value" id="totalStudents">0</span>
+    </div>
 
-                <span
-                    class="stat-value"
-                    id="totalStudents">
-                    45
-                </span>
-            </div>
+    <div class="stat-card present">
+        <h3 class="stat-title">Present</h3>
+        <span class="stat-value" id="presentStudents">0</span>
+    </div>
 
-            <div class="stat-card present">
-                <h3 class="stat-title">
-                    Present
-                </h3>
+    <div class="stat-card absent">
+        <h3 class="stat-title">Absent</h3>
+        <span class="stat-value" id="absentStudents">0</span>
+    </div>
 
-                <span
-                    class="stat-value"
-                    id="presentStudents">
-                    38
-                </span>
-            </div>
+    <div class="stat-card male-present">
+        <h3 class="stat-title">Male Present</h3>
+        <span class="stat-value" id="malePresent">0</span>
+    </div>
 
-            <div class="stat-card absent">
-                <h3 class="stat-title">
-                    Absent
-                </h3>
+    <div class="stat-card female-present">
+        <h3 class="stat-title">Female Present</h3>
+        <span class="stat-value" id="femalePresent">0</span>
+    </div>
 
-                <span
-                    class="stat-value"
-                    id="absentStudents">
-                    7
-                </span>
-            </div>
 
-        </section>
+
+</section>
+
+</section>
+
 
         <!-- PRESENT STUDENTS -->
         <section class="attendance-card">
@@ -131,46 +144,19 @@
                 </h2>
             </div>
 
-        <div class="student-list" id="presentList">
+            <div class="student-list" id="presentList">
     <p>Loading present students...</p>
 </div>
 
                 <div class="student-item">
 
-                    <div class="student-info">
-
-                        <h3 class="student-name">
-                            John Cruz
-                        </h3>
-
-                        <p class="student-id">
-                            2024-001
-                        </p>
-
-                    </div>
-
-                    <span class="badge present-badge">
-                        Present
-                    </span>
+                 
 
                 </div>
 
                 <div class="student-item">
 
-                    <div class="student-info">
-
-                        <h3 class="student-name">
-                            Jane Santos
-                        </h3>
-
-                        <p class="student-id">
-                            2024-002
-                        </p>
-
-                    </div>
-
-                    <span class="badge present-badge">
-                        Present
+                 
                     </span>
 
                 </div>
@@ -188,26 +174,13 @@
                 </h2>
             </div>
 
-  <div class="student-list" id="absentList">
+            <div class="student-list" id="absentList">
     <p>Loading absent students...</p>
 </div>
 
                 <div class="student-item">
 
-                    <div class="student-info">
-
-                        <h3 class="student-name">
-                            Maria Garcia
-                        </h3>
-
-                        <p class="student-id">
-                            2024-010
-                        </p>
-
-                    </div>
-
-                    <span class="badge absent-badge">
-                        Absent
+                 
                     </span>
 
                 </div>
